@@ -4,9 +4,9 @@
 
 #include "Entity/IShape.hpp"
 
-void SortingShapesByAreaStrategy::sort(vector<IShape*> &shapes)
+void SortingShapesByAreaStrategy::sort(vector<shared_ptr<Object>> &shapes)
 {
-    std::sort(shapes.begin(), shapes.end(), [](IShape* shape1, IShape* shape2) {
-        return shape1->area() < shape2->area();
+    std::sort(shapes.begin(), shapes.end(), [](shared_ptr<Object> shape1, shared_ptr<Object> shape2) {
+        return dynamic_pointer_cast<IShape>(shape1)->area() < dynamic_pointer_cast<IShape>(shape2)->area();
     });
 }

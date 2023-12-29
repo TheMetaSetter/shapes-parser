@@ -4,10 +4,13 @@
 using std::string;
 using std::vector;
 
-namespace Utils {
-    class String {
+namespace Utils
+{
+    class String
+    {
     public:
-        static vector<string> split(string haystack, string needle) {
+        static vector<string> split(string haystack, string needle)
+        {
             vector<string> result;
             int startPos = 0;
             size_t foundPos = haystack.find(needle, startPos);
@@ -26,6 +29,23 @@ namespace Utils {
             result.push_back(token);
 
             return result;
+        }
+    };
+
+    class Vector
+    {
+    public:
+        static bool hasNegative(vector<int> numbers)
+        {
+            for (auto number: numbers)
+            {
+                if (number < 0)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     };
 }

@@ -2,13 +2,19 @@
 
 class ParserFactory;
 
+#include <vector>
 #include <map>
+#include <exception>
 
 #include "Business/IParsable.hpp"
 #include "Entity/Object.hpp"
+#include "Business/RectangleParser.hpp"
+#include "Business/SquareParser.hpp"
+#include "Business/CircleParser.hpp"
 
 using std::map;
-
+using std::invalid_argument;
+using std::vector;
 class ParserFactory : public Object
 {
 public:
@@ -16,20 +22,34 @@ public:
 
 private:
     // Using dependency injection
-    map<string, IParsable*> _abilities;
+    map<string, shared_ptr<IParsable>> _abilities;
 
 public:
-    // Inject abilities into the factory
-    void registerWith(IParsable* parser)
+    // Inject abilities through constructor into the factory
+    ParserFactory()
     {
-        _abilities.insert(
-            {parser->parsedObjectName(), parser}
-        );
+        vector<shared_ptr<IParsable>> parsers = {
+            make_shared<RectangleParser>(),
+            make_shared<SquareParser>(),
+            make_shared<CircleParser>()
+        };
+
+        for (shared_ptr<IParsable> parser : parsers)
+        {
+            _abilities[parser->parsedObjectName()] = parser;
+        }
     }
 
-    IParsable* create(string objectName)
+    shared_ptr<IParsable> create(string objectName)
     {
-        return _abilities[objectName];
+        if (_abilities.contains(objectName))
+        {
+            return _abilities[objectName];
+        }
+        else
+        {
+            throw invalid_argument("ParserFactory: No parser for " + objectName);
+        }
     }
 
 public:

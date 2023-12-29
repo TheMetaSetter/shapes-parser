@@ -12,5 +12,10 @@ public:
     virtual ~Object() {};
 
 public:
+    /**
+     * @brief Return keyword (type) of object
+     * 
+     * @return string
+     */
     virtual string toString() = 0;
 };

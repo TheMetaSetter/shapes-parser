@@ -13,7 +13,13 @@ public:
     string parsedObjectName() override { return "Square"; };
 
 public:
-    Object* parse(string data) override;
+    /**
+     * @brief Parse a data string into an object.
+     * 
+     * @param data 
+     * @return shared_ptr<Object> 
+     */
+    shared_ptr<Object> parse(string data) override;
 
 public:
     string toString() override { return "SquareParser"; };

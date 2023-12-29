@@ -1,5 +1,10 @@
 #include <fstream>
 #include <iostream>
+#include <memory>
+
+using std::dynamic_pointer_cast;
+using std::fstream;
+using std::cout, std::endl;
 
 #include "Business/ParserFactory.hpp"
 #include "Business/RectangleParser.hpp"
@@ -10,54 +15,58 @@
 
 #include "Entity/IShape.hpp"
 
-#include "UI/DisplayShapeStrategy.hpp"
 #include "UI/ShapesDisplayer.hpp"
+#include "UI/DisplayShapesTableStrategy.hpp"
 
 #include "Helper/Utils.hpp"
 
-using std::fstream;
-using std::cout, std::endl;
-
 int main()
 {
-    ParserFactory parserFactory;
-    parserFactory.registerWith(new RectangleParser());
-    parserFactory.registerWith(new SquareParser());
-    parserFactory.registerWith(new CircleParser());
-
-    fstream fin("../Data/shapes.txt");
-
-    vector<IShape*> shapes;
-    string line;
-    cout << line << endl;
-    getline(fin, line);
-
-    int numOfShapes = stoi(line);
-
-
-    for (int i = 0; i < numOfShapes; i++)
+    try
     {
+        ParserFactory parserFactory;
+
+        // Read the file --> UPGRADEABLE: Use DAO class
+        fstream fin("../Data/shapes.txt");
+
+        vector<shared_ptr<Object>> shapes;
+
+        string line;
+        cout << line << endl;
         getline(fin, line);
+        int numOfShapes = stoi(line);
 
-        // Square: a=12
-        vector<string> tokens = Utils::String::split(line, ":");
+        for (int i = 0; i < numOfShapes; i++)
+        {
+            getline(fin, line);
 
-        // Create parser
-        IParsable* parser = parserFactory.create(tokens[0]);
+            // Square: a=12
+            vector<string> tokens = Utils::String::split(line, ":");
 
-        // Parse the data
-        IShape* shape = dynamic_cast<IShape*>(parser->parse(tokens[1]));
+            // Create parser
+            shared_ptr<IParsable> parser = parserFactory.create(tokens[0]);
 
-        // Add the shape to the vector
-        shapes.push_back(shape);
+            // Parse the data
+            shared_ptr<IShape> shape = dynamic_pointer_cast<IShape>(parser->parse(tokens[1]));
+
+            // Add the shape to the vector
+            shapes.push_back(shape);
+        }
+
+        SortingShapesPerformer sortingShapesPerformer;
+        sortingShapesPerformer.performSorting(shapes, Criteria::AREA);
+
+        vector<string> headers = {};
+        vector<int> widths = {
+            13, 15, 11
+        };
+
+        shared_ptr<ShapesDisplayer> shapesDisplayer = ShapesDisplayer::getInstance();
+        shapesDisplayer->signWith(make_shared<DisplayShapesTableStrategy>(headers, widths));
+        shapesDisplayer->display(shapes, DisplayMode::TABLE);
     }
-
-    // Sort the shapes
-    SortingShapesPerformer sortingShapesPerformer(new SortingShapesByAreaStrategy());
-    sortingShapesPerformer.performSorting(shapes);
-    
-    // Display the shapes
-    ShapesDisplayer shapesDisplayer(new DisplayShapeStrategy());
-
-    shapesDisplayer.displayShapes(shapes);
+    catch (const std::invalid_argument& ia)
+    {
+        std::cerr << "Invalid argument: " << ia.what() << '\n';
+    }
 }
