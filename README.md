@@ -33,3 +33,6 @@ You can follow the short video here which I use to show the basic usage of the p
 #### Step 3: Run the project using CMake
 - Move to the shapes-parser folder
 - Click the ```Build``` button and click ▶ next to it to run the project
+
+## HOW DO I LINK THE LIBRARY WITH THE PROGRAM?
+- To link the library with the program, I need to write 2 CMakeLists.txt file. One is located right inside the ShapesParser folder and the other is located right inside the shapes-parser folder. If you interest with the implementation of these 2 files, just directly read them as I have carefully commented their code.
