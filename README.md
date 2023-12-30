@@ -35,6 +35,7 @@ You can follow the short video here which I use to show the basic usage of the p
 #### Step 3: Run the project using CMake
 - Move to the shapes-parser folder
 - Click the ```Build``` button and click ▶ next to it to run the project
+- **NOTICE**: Please notice that after building the project, the Application file is located inside the **build** folder, you need to click modify the line "fstream fin("Data/shapes.txt");" in the main.cpp file to make the program be able to find the data file.
 
 ## HOW DO I LINK THE LIBRARY WITH THE PROGRAM?
 - To link the library with the program, I need to write 2 CMakeLists.txt file. One is located right inside the ShapesParser folder and the other is located right inside the shapes-parser folder. If you interest with the implementation of these 2 files, just directly read them as I have carefully commented their code.

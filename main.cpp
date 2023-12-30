@@ -17,6 +17,8 @@ int main()
         // Read the file --> UPGRADEABLE: Use DAO class
         fstream fin("../Data/shapes.txt");
 
+
+
         vector<shared_ptr<Object>> shapes;
 
         string line;
