@@ -1,5 +1,5 @@
 # SHAPES PARSER USING USER-DEFINED SHAPESPARSER LIBRARY
-[Link to the repo]()
+[Link to the repo](https://github.com/TheMetaSetter/shapes-parser)
 
 ## DESCRIPTION
 The program introduced in this project is aimed to read shapes information from a text file, parse them into appropriate shapes, sort them by area, and print out all of the shapes after being sorted.
@@ -17,7 +17,7 @@ First of all, you need to make sure you have downloaded the GitHub Desktop Appli
 After setting up your GitHub Desktop App, back to our GitHub repository, click on the ```<> Code``` button and select ```Open with GitHub Desktop```.
 
 ## DOCUMENTATION
-[Link to documentation](https://themetasetter.github.io/shapes-parser/docs/)
+[Link to documentation](https://themetasetter.github.io/shapes-parser/docs)
 
 ### BASIC USAGE
 Our program is implemented, compiled and run using Visual Studio Code with the help of CMake. For that reason, we will show you the basic usage of this program using VSCode.
