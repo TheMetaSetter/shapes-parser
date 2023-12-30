@@ -36,7 +36,7 @@ public:
      */
     void display(vector<shared_ptr<Object>> shapes) override
     {
-        shared_ptr<IValueConverter> converter = make_shared<ShapeToRowConverter>();
+        shared_ptr<IValueConverter> converter = make_shared<ShapeToRowConverter>(_widths);
         Table table(_headers, _widths, shapes, converter);
         table.display();
     }

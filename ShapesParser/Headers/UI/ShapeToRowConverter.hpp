@@ -21,6 +21,12 @@ private:
     vector<int> _widths;
 
 public:
+    ShapeToRowConverter(vector<int> widths)
+    {
+        _widths = widths;
+    }
+
+public:
     string convert(shared_ptr<Object> object) override;
 
 public:

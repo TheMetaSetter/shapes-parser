@@ -6,19 +6,7 @@ using std::dynamic_pointer_cast;
 using std::fstream;
 using std::cout, std::endl;
 
-#include "Business/ParserFactory.hpp"
-#include "Business/RectangleParser.hpp"
-#include "Business/SquareParser.hpp"
-#include "Business/CircleParser.hpp"
-#include "Business/SortingShapesPerformer.hpp"
-#include "Business/SortingShapesByAreaStrategy.hpp"
-
-#include "Entity/IShape.hpp"
-
-#include "UI/ShapesDisplayer.hpp"
-#include "UI/DisplayShapesTableStrategy.hpp"
-
-#include "Helper/Utils.hpp"
+#include "ShapesParser.hpp"
 
 int main()
 {
@@ -58,7 +46,7 @@ int main()
 
         vector<string> headers = {};
         vector<int> widths = {
-            13, 15, 11
+            12, 16, 18
         };
 
         shared_ptr<ShapesDisplayer> shapesDisplayer = ShapesDisplayer::getInstance();
