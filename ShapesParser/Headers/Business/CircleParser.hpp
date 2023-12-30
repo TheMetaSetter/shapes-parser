@@ -19,7 +19,7 @@ public:
     /**
      * @brief Returns the name of the object that is parsed by this parser. Can later be used in dependency injection.
      * 
-     * @return string 
+     * @return string: the name of the object that is parsed by this parser.
      */
     string parsedObjectName() override { return "Circle"; };
 
@@ -27,8 +27,8 @@ public:
     /**
      * @brief Parse a data string into an object.
      * 
-     * @param data 
-     * @return shared_ptr<Object> 
+     * @param data is the string to be parsed.
+     * @return shared_ptr<Object>: the parsed object.
      */
     shared_ptr<Object> parse(string data) override;
 

@@ -40,6 +40,12 @@ public:
         }
     }
 
+    /**
+     * @brief Create a parser object by its name.
+     * 
+     * @param objectName is the name of the object to be parsed.
+     * @return shared_ptr<IParsable>: the parser object.
+     */
     shared_ptr<IParsable> create(string objectName)
     {
         if (_abilities.contains(objectName))

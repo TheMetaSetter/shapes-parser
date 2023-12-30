@@ -41,9 +41,11 @@ int main()
             shapes.push_back(shape);
         }
 
+        // Sort the shapes by their area
         SortingShapesPerformer sortingShapesPerformer;
         sortingShapesPerformer.performSorting(shapes, Criteria::AREA);
 
+        // Display the shapes
         vector<string> headers = {};
         vector<int> widths = {
             12, 16, 18

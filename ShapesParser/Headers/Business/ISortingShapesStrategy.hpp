@@ -20,9 +20,9 @@ public:
 
 public:
     /**
-     * @brief 
+     * @brief A pure virtual method to sort a vector of shapes.
      * 
-     * @param shapes 
+     * @param shapes is the vector of shapes to be sorted.
      */
     virtual void sort(vector<shared_ptr<Object>> &shapes) = 0;
 

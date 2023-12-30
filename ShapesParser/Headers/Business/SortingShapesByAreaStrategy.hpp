@@ -14,6 +14,11 @@ public:
     ~SortingShapesByAreaStrategy() {};
 
 public:
+    /**
+     * @brief Sort a vector of shapes by their area.
+     * 
+     * @param shapes is the vector of shapes to be sorted.
+     */
     void sort(vector<shared_ptr<Object>> &shapes) override;
 
 public:
