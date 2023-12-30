@@ -1,7 +1,7 @@
 # SHAPES PARSER USING USER-DEFINED SHAPESPARSER LIBRARY
 
 ## DESCRIPTION
-The program introduced in this project is aimed to read shapes information from a text file, parse them into appropriate shapes, sort them by perimeter, and print out all of the shapes after being sorted.
+The program introduced in this project is aimed to read shapes information from a text file, parse them into appropriate shapes, sort them by area, and print out all of the shapes after being sorted.
 
 ## INSTALLATION
 
