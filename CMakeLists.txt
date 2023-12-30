@@ -20,13 +20,13 @@ endif()
 add_library(ShapesParser SHARED IMPORTED)
 
 # Set the ShapesParser library path
-set_target_properties(ShapesParser PROPERTIES IMPORTED_LOCATION ${CMAKE_CURRENT_LIST_DIR}/ShapesParser/libShapesParser.${LIB_EXTENSION})
+set_target_properties(ShapesParser PROPERTIES IMPORTED_LOCATION "${CMAKE_CURRENT_LIST_DIR}/ShapesParser/libShapesParser.${LIB_EXTENSION}")
 
 # Add the Headers directories to the compiler include path
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_LIST_DIR}/ShapesParser/Headers)
+target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_LIST_DIR}/ShapesParser/Headers")
 
 # Add the API directories to the compiler include path
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_LIST_DIR}/ShapesParser/API)
+target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_LIST_DIR}/ShapesParser/API")
 
 # Link the ShapesParser library to the Application
 target_link_libraries(${PROJECT_NAME} PRIVATE ShapesParser)
